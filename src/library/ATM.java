@@ -1,9 +1,4 @@
-package atm;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static atm.Client.Registration;
+package library;
 
 public class ATM {
     public static void main(String[] args) {
@@ -15,18 +10,20 @@ public class ATM {
         // в карточке должен быть функционал по типу проверка суммы, вывод и ввод средств, проверка пароля
         // клиент редактирование фио, добавление и удаление карточек, смена страны
 
-        Map<String,Client> test = new HashMap<>();
-        Client testClient = new Client();
-        Client testClient2 = new Client("qwe","qwe","qwe",12,1.0,"123");
-        test.put("first",testClient);
-        test.put("second",testClient2);
-        System.out.println(test.get("first"));
-        System.out.println(test.get("second"));
-        List<Client> clients = List.of(new Client(),new Client(),new Client());
-        boolean ageTest = clients.stream().allMatch(client -> client.getAge()>=18);
-        List<Client> age18 = clients.stream().filter(Client::isAdult).collect(Collectors.toList());
-//        Menu menu = new Menu();
-//        menu.start();
+//        Map<String,Client> test = new HashMap<>();
+//        Client testClient = new Client();
+//        Client testClient2 = new Client("qwe","qwe","qwe",12,1.0,"123");
+//        test.put("first",testClient);
+//        test.put("second",testClient2);
+//        System.out.println(test.get("first"));
+//        System.out.println(test.get("second"));
+//        List<Client> clients = List.of(new Client(),new Client(),new Client());
+//        boolean ageTest = clients.stream().allMatch(client -> client.getAge()>=18);
+//        List<Client> age18 = clients.stream().filter(Client::isAdult).collect(Collectors.toList());
+
+
+        Menu menu = new Menu();
+        menu.start();
     }
 
 }

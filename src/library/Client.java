@@ -1,4 +1,4 @@
-package atm;
+package library;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -29,16 +29,17 @@ public class Client {
     private Integer age;
     private double balance;
     private String password;
-    private boolean adult;
+    private String confirm;
     private static List<Client> clients = new ArrayList<>();
 
-    public Client(String name, String surname, String patronymic, Integer age, Double balance, String password) {
+    public Client(String name, String surname, String patronymic, Integer age, Double balance, String password, String confirm) {
         this.name = name.toLowerCase();
         this.surname = surname.toLowerCase();
         this.patronymic = patronymic.toLowerCase();
         this.age = age;
         this.balance = balance;
         this.password = password;
+        this.confirm = confirm;
     }
 
     public Client() {
@@ -77,14 +78,22 @@ public class Client {
             if (age < 0 || age > 128) {
                 throw new InvalidAgeException("Возраст должен быть в диапазоне от 0 до 128.");
             }
-            Client client = new Client(name, surname, patronymic, age, builder().balance, builder().password);
-            clients.add(client);
-            return client;
+
         } catch (InputMismatchException e) {
             scan.next();
             throw new InvalidAgeException("Возраст должен быть числом.");
         }
-
+        System.out.print("Введите пароль: ");
+        String password = scan.next();
+        System.out.print("Введите пароль еще раз: ");
+        String confirm = scan.next();
+        if(password != confirm)
+        {
+            throw new InvalidNameException("Пароль не подходит");
+        }
+        Client client = new Client(name, surname, patronymic, builder().age, builder().balance, builder().password, builder().confirm);
+        clients.add(client);
+        return client;
 
     }
 
